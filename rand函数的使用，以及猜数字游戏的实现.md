@@ -56,16 +56,18 @@ void menu()
 void game()
 {
 	int count = 0;
+	int m;
 	do
 	{
 		printf("请问您要尝试几次\n");
-		if (scanf("%d", &count) != 1)
+		m=scanf("%d", &count); 
+		if (m!=1)
 		{
 			printf("输入有错，请您重新输入\n");
 			while (getchar() != '\n');//清除缓冲区
 			continue;
 		}
-	} while (count!=1);
+	} while (m!=1);
 	int number = rand() % 100 + 1;
 	do
 	{
@@ -92,3 +94,7 @@ void game()
 	}
 }
 ```
+> [!warning]
+>猜数字游戏里面出现了两个逻辑漏洞
+>* 在猜对数字的时候少加了break跳出循环
+>* 在增强程序健壮性那里使用了一个死循环。
