@@ -30,3 +30,11 @@ Release/
 # should NOT be excluded as they contain compiler settings and other important
 # information for Eclipse / Flash Builder.
 /c语言学习/c-language-learning-notes/*.lnk
+/.obsidian/*.json
+/.obsidian/plugins/obsidian-git/*.js
+/.obsidian/plugins/obsidian-git/*.json
+/.obsidian/plugins/obsidian-git/*.css
+/.obsidian/themes/Minimal/*.json
+/.obsidian/themes/Minimal/*.css
+/.obsidian/themes/Things/*.json
+/.obsidian/themes/Things/*.css
