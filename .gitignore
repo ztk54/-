@@ -13,3 +13,8 @@ desktop.ini
 # 可选：是否提交Obsidian配置？
 # 建议提交插件和主题配置，但忽略频繁变化的文件
 .obsidian/plugins/obsidian-git/data.json  # Git插件自己的数据
+
+/.obsidian/plugins/floating-toc/data.json
+/.obsidian/plugins/floating-toc/main.js
+/.obsidian/plugins/floating-toc/manifest.json
+/.obsidian/plugins/floating-toc/styles.css
