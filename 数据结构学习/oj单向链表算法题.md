@@ -1,4 +1,4 @@
-# 返回相交链表节点
+## 返回相交链表节点
 *方法一*两个链表较长的减去较短的，然后让较短的先走n步，然后再比较地址是否相等
 ```c
 struct ListNode *getIntersectionNode(struct ListNode *headA, struct ListNode *headB)
