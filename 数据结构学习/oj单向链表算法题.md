@@ -63,3 +63,27 @@ struct ListNode *getIntersectionNode(struct ListNode *headA, struct ListNode *he
 }
 ```
 这里在循环那里犯了一个很致命的错误，`pa=(pa==NULL)?headB:pa->next;pb=(pb==NULL)?headA:pb->next;`这里原本的headA和headB写的是pa和pb，但是这样就导致了逻辑混乱，比如说pa直接指向pb的位置了，而不是指向头节点的位置。
+## 反转链表
+给你单链表的头节点 `head` ，请你反转链表，并返回反转后的链表。
+这题我采用了自身原地反转的思想，使用pre，pcur，nextnode三个指针来实现自身原地反转，pcur指针遍历链表，pcur指向pre实现反转功能，nextnode保存下一个节点位置，实现遍历
+```c
+struct ListNode* reverseList(struct ListNode* head)
+{
+    if(head==NULL)
+    {
+        return head;
+    }
+    ListNode* pcur=head;
+    ListNode* pre=NULL;
+    ListNode* nextnode=head->next;
+    while(pcur)
+    {
+        pcur->next=pre;
+        pre=pcur;
+        pcur=nextnode;
+        if(nextnode)
+            nextnode=nextnode->next;
+    }
+    return pre;
+}
+```
