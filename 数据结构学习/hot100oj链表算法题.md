@@ -87,3 +87,66 @@ struct ListNode* reverseList(struct ListNode* head)
     return pre;
 }
 ```
+## 回文链表
+给你一个单链表的头节点 `head` ，请你判断该链表是否为回文链表。如果是，返回 `true` ；否则，返回 `false` 。
+这题我采用快慢指针找中间节点，根据中间节点反转后半段链表再与前面进行比较
+```c
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     struct ListNode *next;
+ * };
+ */
+typedef struct ListNode ListNode;
+//快慢指针找到中间节点
+ListNode* FindMid(ListNode* head)
+{
+    ListNode* slownode=head;
+    ListNode* fastnode=head;
+    while(fastnode&&fastnode->next)
+    {
+        slownode=slownode->next;
+        fastnode=fastnode->next->next;
+    }
+    return slownode;
+}
+//原地反转链表
+ListNode* ReverseList(ListNode* head)
+{
+    ListNode* pre=NULL;
+    ListNode* pcur=head;
+    ListNode* nextnode=pcur->next;
+    while(pcur)
+    {
+        pcur->next=pre;
+        pre=pcur;
+        pcur=nextnode;
+        if(nextnode)
+        {
+            nextnode=pcur->next;
+        }
+    }
+    return pre;
+}
+bool isPalindrome(struct ListNode* head)
+{
+    ListNode* mid=FindMid(head);
+    ListNode* right=ReverseList(mid);
+    while(right)
+    {
+        if(head->val!=right->val)
+        {
+            return false;
+        }
+        else
+        {
+            head=head->next;
+            right=right->next;
+        }
+    }
+    return true;
+}
+```
+> [!bug] 在这里的快慢指针循环条件中一定要是`while(fastnode&&fastnode->next)`不能颠倒顺序，不然会发生空指针的解引用。
+
