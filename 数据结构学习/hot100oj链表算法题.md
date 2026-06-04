@@ -1,5 +1,5 @@
 ## 返回相交链表节点
-*方法一*两个链表较长的减去较短的，然后让较短的先走n步，然后再比较地址是否相等
+*方法一*两个链表较长的减去较短的，然后让较长的先走n步，然后再比较地址是否相等
 ```c
 struct ListNode *getIntersectionNode(struct ListNode *headA, struct ListNode *headB)
 
@@ -44,7 +44,7 @@ struct ListNode *getIntersectionNode(struct ListNode *headA, struct ListNode *he
 }
 ```
 一些问题思考，第一是错误使用了long和short作为变量名，但是这两个是c语言关键字，不能作为变量名称使用，第二是可以直接使用绝对值函数abs
-*方法二：双指针法*核心思路就是让两个指针循环前进，一旦走到末尾就交换到另一条链表的头节点，原理是假如有链表A和B，A的单独部分设为a，B的公共部分设为b，公共部分设为c，第一遍走到NULL的时候A走了a+b，B走了b+c，如果*两者相交的话*，那么A再走c步，B再走a步，必定会有相遇。如果两者*没有相交*的话，那么就是A会走a+b步，B会走a+b步，同时指向NULL，退出循环。
+*方法二：双指针法*核心思路就是让两个指针循环前进，一旦走到末尾就交换到另一条链表的头节点，原理是假如有链表A和B，A的单独部分设为a，B的单独部分设为b，公共部分设为c，第一遍走到NULL的时候A走了a+c，B走了b+c，如果*两者相交的话*，那么A再走c步，B再走a步，必定会有相遇。如果两者*没有相交*的话，那么就是A会走a+b步，B会走a+b步，同时指向NULL，退出循环。
 ```c
 struct ListNode *getIntersectionNode(struct ListNode *headA, struct ListNode *headB)
 {
